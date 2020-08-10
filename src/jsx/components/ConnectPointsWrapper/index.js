@@ -55,7 +55,7 @@ export default function ConnectPointsWrapper({ boxId, handler, ref0, ...props })
           <Xarrow 
             color={'#8652e3'}
             headSize={5}
-            strokeWidth={3}
+            strokeWidth={4}
             start={ref0}
             end={ref1}
             {...props}

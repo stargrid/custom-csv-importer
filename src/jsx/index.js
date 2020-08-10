@@ -31,7 +31,6 @@ export default function App({
   ...props }) {
 
   const addArrow = ({ start, end }) => {
-    const newArrows = arrows
     arrows.forEach((item, index) => {
       if (item.start === start || item.end === end) {
         arrows.splice(index, 1)
@@ -39,8 +38,19 @@ export default function App({
       }
     })
 
-    setArrows([...newArrows, { start, end }])
+    setArrows([...arrows, { start, end }])
   };
+
+  const removeArrow = ({ start, end }) => {
+    arrows.forEach((item, index) => {
+      if (item.start === start && item.end === end) {
+        arrows.splice(index, 1)
+        return
+      }
+    })
+
+    setArrows([...arrows])
+  }
   
   return (
     <Container>
@@ -78,15 +88,16 @@ export default function App({
       </Items>
 
       {arrows.map((ar, index) => (
-        <Xarrow
-          color={'#8652e3'}
-          headSize={5}
-          strokeWidth={3}
-          start={ar.start}
-          end={ar.end}
-          key={index}
-          {...props}
-        />
+        <div onClick={() => removeArrow(ar)} key={index} style={{ position: 'absolute' }}>
+          <Xarrow
+            color={'#8652e3'}
+            headSize={5}
+            strokeWidth={4}
+            start={ar.start}
+            end={ar.end}
+            {...props}
+          />
+        </div>
       ))}
     </Container>
   );
