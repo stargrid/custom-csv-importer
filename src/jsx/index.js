@@ -21,13 +21,16 @@ const Title = styled.p`
   text-align: center;
 `
 
+const defaultCsvMock = [{ column_id: 1, column_name: 'Default Item 1', required: true, }, { column_id: 2, column_name: 'Default Item 2', required: false, }]
+const userCsvMock = [{ column_id: 1, column_name: 'User Item 1' }, { column_id: 2, column_name: 'User Item 2' }]
+
 export default function App({ 
-  arrows,
+  arrows = [],
   setArrows,
-  defaultCsvTitle,
-  userCsvTitle,
-  defaultCsv,
-  userCsv,
+  defaultCsvTitle = 'Default CSV',
+  userCsvTitle = 'User CSV',
+  defaultCsv = defaultCsvMock,
+  userCsv = userCsvMock,
   ...props }) {
 
   const addArrow = ({ start, end }) => {
@@ -55,7 +58,7 @@ export default function App({
   return (
     <Container>
       <Items>
-        <Title>{ defaultCsvTitle || 'Default CSV' }</Title>
+        <Title>{ defaultCsvTitle }</Title>
         {
           defaultCsv.map((item, index) => (
             <Box
@@ -72,7 +75,7 @@ export default function App({
       </Items>
 
       <Items>
-        <Title>{ userCsvTitle || 'User CSV' }</Title>
+        <Title>{ userCsvTitle }</Title>
         {
           userCsv.map((item, index) => (
             <Box

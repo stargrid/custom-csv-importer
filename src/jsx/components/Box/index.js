@@ -11,7 +11,11 @@ const Container = styled.div`
   width: 150px;
 `
 
-export default function Box({ text, handler, addArrow, boxId, customBox, isRequired, ...props }) {
+const Text = styled.p`
+  text-align: center;
+`
+
+export default function Box({ text, handler, addArrow, boxId, customBox, customText, isRequired, ...props }) {
   const ref0 = useRef()
 
   const onDrop = (e) => {
@@ -25,16 +29,15 @@ export default function Box({ text, handler, addArrow, boxId, customBox, isRequi
     }
   }
 
-  const BoxLayout = customBox ? customBox : Container
-
   return (
-    <BoxLayout
+    <Container
+      style={customBox}
       id={boxId}
       ref={ref0}
       onDragOver={e => e.preventDefault()}
       onDrop={onDrop}>
-      {text} {isRequired ? '*' : ''}
+      <Text style={customText}>{text} {isRequired ? '*' : ''}</Text>
       <ConnectPointsWrapper {...{ boxId, handler, ref0, ...props }} />
-    </BoxLayout>
+    </Container>
   );
 }
