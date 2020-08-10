@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Importer from '../lib';
+import Importer from '../../lib';
 
 const csvDefault = [
   {
