@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "main": "./src/lib/index.js",
   "license": "MIT",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "start": "react-dependency-scripts start",
     "build": "react-dependency-scripts build",
