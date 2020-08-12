@@ -1,7 +1,7 @@
 {
   "name": "custom-csv-importer",
   "version": "1.0.3",
-  "main": "./src/lib/index.js",
+  "main": "./lib/index.js",
   "license": "MIT",
   "scripts": {
     "start": "react-dependency-scripts start",
